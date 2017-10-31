@@ -59,18 +59,17 @@ namespace CoiniumServ.Persistance.Providers.Redis
                     ReconnectWait = 200
                 };
 
-                // select the database
-                Client.Select(_config.DatabaseId);
+//                // select the database
+//                Client.Select(_config.DatabaseId);
 
                 // authenticate if needed.
                 if (!string.IsNullOrEmpty(_config.Password))
                     Client.Auth(_config.Password);
 
-//                // check the version
-//                var version = GetVersion();
-//                if (version < _requiredMinimumVersion)
-//                    throw new Exception(string.Format("You are using redis version {0}, minimum required version is 2.6", version));
-                var version = "3.2.1";
+                // check the version
+                var version = GetVersion();
+                if (version < _requiredMinimumVersion)
+                    throw new Exception(string.Format("You are using redis version {0}, minimum required version is 2.6", version));
 
                 _logger.Information("Redis storage initialized: {0:l}:{1}, v{2:l}.", _config.Host, _config.Port, version);
             }
