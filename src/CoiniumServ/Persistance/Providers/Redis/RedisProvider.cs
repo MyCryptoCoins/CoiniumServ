@@ -70,6 +70,7 @@ namespace CoiniumServ.Persistance.Providers.Redis
 //                var version = GetVersion();
 //                if (version < _requiredMinimumVersion)
 //                    throw new Exception(string.Format("You are using redis version {0}, minimum required version is 2.6", version));
+                var version = "3.2.1";
 
                 _logger.Information("Redis storage initialized: {0:l}:{1}, v{2:l}.", _config.Host, _config.Port, version);
             }
