@@ -59,12 +59,12 @@ namespace CoiniumServ.Persistance.Providers.Redis
                     ReconnectWait = 200
                 };
 
-//                // select the database
-//                Client.Select(_config.DatabaseId);
+                // select the database
+                Client.Select(_config.DatabaseId);
 
-                // authenticate if needed.
-                if (!string.IsNullOrEmpty(_config.Password))
-                    Client.Auth(_config.Password);
+//                // authenticate if needed.
+//                if (!string.IsNullOrEmpty(_config.Password))
+//                    Client.Auth(_config.Password);
 
                 // check the version
                 var version = GetVersion();
