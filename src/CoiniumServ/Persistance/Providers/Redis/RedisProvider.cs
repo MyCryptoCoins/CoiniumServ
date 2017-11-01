@@ -62,9 +62,9 @@ namespace CoiniumServ.Persistance.Providers.Redis
                 // select the database
                 Client.Select(_config.DatabaseId);
 
-//                // authenticate if needed.
-//                if (!string.IsNullOrEmpty(_config.Password))
-//                    Client.Auth(_config.Password);
+                // authenticate if needed.
+                if (!string.IsNullOrEmpty(_config.Password))
+                    Client.Auth(_config.Password);
 
                 // check the version
                 var version = GetVersion();

@@ -156,6 +156,7 @@ namespace CoiniumServ.Jobs.Manager
             try
             {
                 var blockTemplate = _daemonClient.GetBlockTemplate(_poolConfig.Coin.Options.BlockTemplateModeRequired);
+		_logger.Information("blockTemplate: {0}", blockTemplate);
 
                 // TODO: convert generation transaction to ioc & DI based.
                 var generationTransaction = new GenerationTransaction(ExtraNonce, _daemonClient, blockTemplate, _poolConfig);
