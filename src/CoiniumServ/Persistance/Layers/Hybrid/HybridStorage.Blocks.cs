@@ -52,14 +52,15 @@ namespace CoiniumServ.Persistance.Layers.Hybrid
                 using (var connection = new MySqlConnection(_mySqlProvider.ConnectionString))
                 {
                     connection.Execute(
-                        @"INSERT INTO Block(Height, BlockHash, TxHash, Amount, CreatedAt) VALUES (@height, @blockHash, @txHash, @amount, @createdAt)",
+                        @"INSERT INTO Block(Height, BlockHash, TxHash, Amount, CreatedAt, Reward) VALUES (@height, @blockHash, @txHash, @amount, @createdAt, @reward)",
                         new
                         {
                             height = share.Block.Height,
                             blockHash = share.BlockHash.ToHexString(),
                             txHash = share.Block.Tx.First(),
                             amount = (decimal)share.GenerationTransaction.TotalAmount,
-                            createdAt = share.Block.Time.UnixTimestampToDateTime()
+                            createdAt = share.Block.Time.UnixTimestampToDateTime(),
+			    reward = 0
                         });
                 }
             }
